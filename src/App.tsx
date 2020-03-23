@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
@@ -32,7 +32,8 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { UserContextProvider, UserContext } from './store/user/UserContext';
+import { UserContextProvider } from './store/user/UserContext';
+import useUserStore from './store/user/useUserStore';
 
 const App: React.FC = () => {
   return (
@@ -43,7 +44,7 @@ const App: React.FC = () => {
 };
 
 const IonicApp: React.FC = () => {
-  const { actions } = useContext(UserContext)
+  const { actions } = useUserStore()
 
   useEffect(() => {
     actions.dispatch({ type: 'load-users' })

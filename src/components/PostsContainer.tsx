@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
-import { PostContext } from '../store/post/PostContext';
+import React from 'react';
 import { IonLabel, IonAvatar, IonList, IonItem } from '@ionic/react';
-import { UserContext } from '../store/user/UserContext';
+import usePostStore from '../store/post/usePostStore';
+import useUserStore from '../store/user/useUserStore';
+
 interface ContainerProps { }
 
 const PostsContainer: React.FC<ContainerProps> = () => {
-  const { state: { posts } } = useContext(PostContext)
-  const { state: { users } } = useContext(UserContext)
+  const { state: { posts } } = usePostStore()
+  const { state: { users } } = useUserStore()
 
   return (
     <IonList>

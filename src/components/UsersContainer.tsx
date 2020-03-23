@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './UsersContainer.css';
 import { IonList, IonItem, IonAvatar, IonLabel, IonSkeletonText, IonButton } from '@ionic/react';
-import { UserContext } from '../store/user/UserContext';
+
 import { User } from '../models/User';
+import useUserStore from '../store/user/useUserStore';
 
 interface ContainerProps { }
 
 const UsersContainer: React.FC<ContainerProps> = () => {
-  const { getters: { usersReversed }, state: userState, mutations } = useContext(UserContext)
+  const { getters: { usersReversed }, state: userState, mutations } = useUserStore()
 
   return (
     <div className="container">

@@ -126,6 +126,16 @@ export const getters = (state: Readonly<${p(s)}State>): ${p(s)}Getters => {
   }
 }`)
 
+fs.writeFileSync(
+  `./${s}/use${p(s)}Store.ts`, `import { useContext } from 'react'
+import { ${p(s)}Context } from './${p(s)}Context'
+
+const use${p(s)}Store = () => {
+  return useContext(${p(s)}Context)
+}
+
+export default use${p(s)}Store`)
+
 
   fs.writeFileSync(
     `./${s}/structure/types/index.ts`, `import { ${p(s)} } from "../../../../models/${p(s)}"

@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Post.css';
-import { PostContext, PostContextProvider } from '../store/post/PostContext';
+import { PostContextProvider } from '../store/post/PostContext';
 import PostsContainer from '../components/PostsContainer';
+import usePostStore from '../store/post/usePostStore';
 
 const Post: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const Post: React.FC = () => {
 };
 
 const IonicPost: React.FC = () => {
-  const { actions } = useContext(PostContext)
+  const { actions } = usePostStore()
 
   useEffect(() => {
     actions.dispatch({ type: 'load-posts' })
